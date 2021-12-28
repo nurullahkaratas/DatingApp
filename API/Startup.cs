@@ -38,10 +38,12 @@ namespace API
             services.AddApplicationServices(_config);
             services.AddControllers();
             services.AddCors();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
-            });
+            // services.AddSwaggerGen(c =>
+            // {
+            //     c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
+            // });
+
+            services.AddSwaggerSecurityService(_config);
            services.AddIdentityServices(_config);
         }
 
