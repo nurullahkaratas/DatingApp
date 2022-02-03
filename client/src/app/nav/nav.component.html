@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Dating App</a>
+    <a class="navbar-brand" routerLink='/'>Dating App</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -13,23 +13,25 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ul class="navbar-nav me-auto mb-2 mb-md-0" *ngIf="loggedIn">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Mathces</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Lists</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Messages</a>
-        </li>
+      <ul class="navbar-nav me-auto mb-2 mb-md-0" >
+        <ng-container *ngIf="accountService.currentUser$|async">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/members" routerLinkActive='active'>Mathces</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/lists"routerLinkActive='active'>Lists</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/messages" routerLinkActive='active'>Messages</a>
+          </li>
+        </ng-container>
       </ul>
       
       <div class="super-menu">
 
       <form
         class="d-flex"
-        *ngIf="!loggedIn"
+        *ngIf="(accountService.currentUser$ | async)===null"
         #loginForm="ngForm"
         (ngSubmit)="login()"
         autocomplete="off"
@@ -55,10 +57,9 @@
         <button class="btn btn-outline-success" href="#" type="submit">Login</button>
       </form>
 
-      <div class="btn-group" dropdown *ngIf="loggedIn">
+      <div class="btn-group" dropdown *ngIf="(accountService.currentUser$| async) as user" dropdown>
         <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
-                aria-controls="dropdown-basic" style="background-color: gray;">
-          Welcome X
+                aria-controls="dropdown-basic" style="background-color: gray;"> Welcome {{user.username | titlecase}}
         </button>
         <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
             role="menu" aria-labelledby="button-basic">
