@@ -14,10 +14,13 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav me-auto mb-2 mb-md-0" >
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/errors" routerLinkActive='active'>Errors</a>
+        </li>
         <ng-container *ngIf="accountService.currentUser$|async">
           <li class="nav-item">
-            <a class="nav-link" routerLink="/members" routerLinkActive='active'>Mathces</a>
           </li>
+            <a class="nav-link" routerLink="/members" routerLinkActive='active'>Mathces</a>
           <li class="nav-item">
             <a class="nav-link" routerLink="/lists"routerLinkActive='active'>Lists</a>
           </li>
