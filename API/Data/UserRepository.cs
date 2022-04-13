@@ -62,5 +62,10 @@ namespace API.Data
         {
             _context.Entry(user).State = EntityState.Modified;
         }
+
+        public async Task<Book> GetBooks(){
+           return await  _context.Books.FirstOrDefaultAsync();
+        }
+
     }
 }

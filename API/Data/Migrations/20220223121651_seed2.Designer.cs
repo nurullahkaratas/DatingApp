@@ -3,14 +3,16 @@ using System;
 using API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20220223121651_seed2")]
+    partial class seed2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -92,10 +94,10 @@ namespace API.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 25,
-                            Author = "doktor2",
+                            Id = 1,
+                            Author = "kim",
                             BookId = 4,
-                            Created = new DateTime(2022, 2, 23, 15, 39, 55, 491, DateTimeKind.Local).AddTicks(572)
+                            Created = new DateTime(2022, 2, 23, 15, 16, 51, 625, DateTimeKind.Local).AddTicks(1327)
                         });
                 });
 

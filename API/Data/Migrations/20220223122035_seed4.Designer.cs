@@ -3,14 +3,16 @@ using System;
 using API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20220223122035_seed4")]
+    partial class seed4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -92,10 +94,31 @@ namespace API.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 25,
+                            Id = 2,
                             Author = "doktor2",
                             BookId = 4,
-                            Created = new DateTime(2022, 2, 23, 15, 39, 55, 491, DateTimeKind.Local).AddTicks(572)
+                            Created = new DateTime(2022, 2, 23, 15, 20, 34, 921, DateTimeKind.Local).AddTicks(2170)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Author = "doktor3",
+                            BookId = 4,
+                            Created = new DateTime(2022, 2, 23, 15, 20, 34, 922, DateTimeKind.Local).AddTicks(3109)
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Author = "doktor4",
+                            BookId = 4,
+                            Created = new DateTime(2022, 2, 23, 15, 20, 34, 922, DateTimeKind.Local).AddTicks(3180)
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Author = "doktor5",
+                            BookId = 4,
+                            Created = new DateTime(2022, 2, 23, 15, 20, 34, 922, DateTimeKind.Local).AddTicks(3193)
                         });
                 });
 

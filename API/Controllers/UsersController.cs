@@ -42,5 +42,13 @@ namespace API.Controllers
             var user= await _userRepository.GetMemberAsync(username);
             return Ok(user);
         }
+        [HttpGet]
+        public async Task<ActionResult<Book>> GetBooks()
+        {  
+            var user= await _userRepository.GetBooks();
+            return Ok(user);
+        }
+
+        
     }
 }

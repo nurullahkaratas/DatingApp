@@ -3,14 +3,16 @@ using System;
 using API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20220223110940_seed-book")]
+    partial class seedbook
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -71,31 +73,27 @@ namespace API.Data.Migrations
 
             modelBuilder.Entity("API.Entities.Book", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("BookId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Author")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("BookId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<DateTime>("Created")
                         .HasColumnType("date")
                         .HasColumnName("CREATED");
 
-                    b.HasKey("Id");
+                    b.HasKey("BookId");
 
                     b.ToTable("Books");
 
                     b.HasData(
                         new
                         {
-                            Id = 25,
-                            Author = "doktor2",
                             BookId = 4,
-                            Created = new DateTime(2022, 2, 23, 15, 39, 55, 491, DateTimeKind.Local).AddTicks(572)
+                            Author = "kim",
+                            Created = new DateTime(2022, 2, 23, 14, 9, 39, 778, DateTimeKind.Local).AddTicks(7368)
                         });
                 });
 
