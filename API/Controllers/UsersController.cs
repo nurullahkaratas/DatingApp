@@ -12,13 +12,16 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
+    // [Route("Users")]
+    // [Produces("application/json")]
+    // [ApiExplorerSettings(GroupName = "Users")]
     [Authorize]
     public class UsersController : BaseApiController
     {
         private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
 
-        public UsersController(IUserRepository userRepository,IMapper mapper)
+        public UsersController(IUserRepository userRepository, IMapper mapper)
         {
             _userRepository = userRepository;
             _mapper = mapper;
@@ -27,7 +30,7 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers()
         {
-            var users= await _userRepository.GetMembersAsync();
+            var users = await _userRepository.GetMembersAsync();
             return Ok(users);
 
         }
@@ -38,17 +41,17 @@ namespace API.Controllers
         // }
         [HttpGet("{username}")]
         public async Task<ActionResult<MemberDto>> GetUsers(string username)
-        {  
-            var user= await _userRepository.GetMemberAsync(username);
+        {
+            var user = await _userRepository.GetMemberAsync(username);
             return Ok(user);
         }
         [HttpGet]
-        public async Task<ActionResult<Book>> GetBooks()
-        {  
-            var user= await _userRepository.GetBooks();
-            return Ok(user);
+        public async Task<ActionResult<List<Book>>> GetBooks()
+        {
+            var book = await _userRepository.GetBooks();
+            return Ok(book);
         }
 
-        
+
     }
 }

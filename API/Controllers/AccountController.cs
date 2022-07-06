@@ -23,7 +23,7 @@ namespace API.Controllers
             _context = context;
         }
 
-        [HttpPost("register")]
+        [HttpPost]
         public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
         {
 
@@ -48,7 +48,7 @@ namespace API.Controllers
         {
             return await _context.Users.AnyAsync(s => s.UserName == username.ToLower());
         }
-        [HttpPost("login")]
+        [HttpPost]
         public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
         {
             var user = await _context.Users.SingleOrDefaultAsync(s => s.UserName.ToLower() == loginDto.Username.ToLower());

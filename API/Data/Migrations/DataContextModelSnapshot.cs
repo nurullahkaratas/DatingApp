@@ -71,32 +71,19 @@ namespace API.Data.Migrations
 
             modelBuilder.Entity("API.Entities.Book", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("BookId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Author")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("BookId")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Created")
+                        .HasColumnType("date");
 
-                    b.Property<DateTime>("Created")
-                        .HasColumnType("date")
-                        .HasColumnName("CREATED");
-
-                    b.HasKey("Id");
+                    b.HasKey("BookId");
 
                     b.ToTable("Books");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 25,
-                            Author = "doktor2",
-                            BookId = 4,
-                            Created = new DateTime(2022, 2, 23, 15, 39, 55, 491, DateTimeKind.Local).AddTicks(572)
-                        });
                 });
 
             modelBuilder.Entity("API.Entities.Photo", b =>
